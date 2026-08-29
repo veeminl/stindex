@@ -10,7 +10,16 @@
             margin: 0;
             padding: 60px 40px;
             background-color: #ffffff;
-            color: #000000;
+            color: #17244f;
+        }
+        /* 选中文本样式 */
+        ::selection {
+            background: #000000;
+            color: #ffffff;
+        }
+        ::-moz-selection {
+            background: #000000;
+            color: #ffffff;
         }
         .container {
             max-width: 600px;
@@ -22,11 +31,11 @@
             font-weight: 700;
             margin-bottom: 0.2em;
             letter-spacing: -0.5px;
-            color: #000000;
+            color: #17244f;
         }
         .subtitle {
             font-size: 1.2em;
-            color: #000000;
+            color: #17244f;
             margin-bottom: 3em;
             font-weight: 400;
         }
@@ -37,15 +46,30 @@
             gap: 16px;
         }
         .button {
-            display: inline-block;
-            padding: 8px 4px;
-            font-size: 1.2em;
-            color: #000000;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.8em;                /* 按钮容器固定大小，仅容纳图标 */
+            height: 1.8em;
+            transition: background-color 0.3s ease;
             text-decoration: none;
-            letter-spacing: 0.3px;
+            /* 悬停时颜色改变由 mask 的 background-color 控制 */
         }
-        .button:hover {
-            color: #000000;
+        .icon {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: #17244f;   /* 默认颜色 */
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            transition: background-color 0.3s ease;  /* 平滑过渡 */
+        }
+        .button:hover .icon {
+            background-color: #000000;   /* 悬停颜色 */
         }
     </style>
 </head>
@@ -55,21 +79,29 @@
         <div class="subtitle">-绿色蔬菜-</div>
 
         <div class="button-group">
-            <!-- 新增：文章入口 -->
-            <a class="button" href="articles.html">
-                文章
+            <!-- 文章 -->
+            <a class="button" href="articles.html" title="文章">
+                <span class="icon" style="mask-image: url('book.png'); -webkit-mask-image: url('book.png');"></span>
             </a>
 
-            <a class="button" href="https://wwamr.lanzoum.com/iOgcJ42bzn7i" target="_blank">
-                切割模拟器
+            <!-- 切割模拟器 -->
+            <a class="button" href="https://wwamr.lanzoum.com/iOgcJ42bzn7i" target="_blank" title="切割模拟器">
+                <span class="icon" style="mask-image: url('qgq.png'); -webkit-mask-image: url('qgq.png');"></span>
             </a>
 
-            <a class="button" href="https://space.bilibili.com/3546387744557738?spm_id_from=333.337.0.0" target="_blank">
-                B站首页
+            <!-- B站首页 -->
+            <a class="button" href="https://space.bilibili.com/3546387744557738?spm_id_from=333.337.0.0" target="_blank" title="B站首页">
+                <span class="icon" style="mask-image: url('bilibili.png'); -webkit-mask-image: url('bilibili.png');"></span>
             </a>
 
-            <a class="button" href="https://www.ifdian.net/order/create?user_id=9c51d8d47bff11f1bdbd5254001e7c00&amp;remark=&amp;affiliate_code=" target="_blank">
-                支持我
+            <!-- X -->
+            <a class="button" href="https://x.com/i/status/2075440775723413893" target="_blank" title="X">
+                <span class="icon" style="mask-image: url('X.png'); -webkit-mask-image: url('X.png');"></span>
+            </a>
+
+            <!-- 支持我（爱发电） -->
+            <a class="button" href="https://www.ifdian.net/order/create?user_id=9c51d8d47bff11f1bdbd5254001e7c00&amp;remark=&amp;affiliate_code=" target="_blank" title="支持我">
+                <span class="icon" style="mask-image: url('happy.png'); -webkit-mask-image: url('happy.png');"></span>
             </a>
         </div>
     </div>
