@@ -10,9 +10,8 @@
             margin: 0;
             padding: 60px 40px;
             background-color: #ffffff;
-            color: #37245f;               /* 全局默认深紫 */
+            color: #37245f;
         }
-        /* 选中文本样式 */
         ::selection {
             background: #000000;
             color: #ffffff;
@@ -48,53 +47,50 @@
             color: #37245f;
             text-decoration: none;
             letter-spacing: 0.3px;
-            transition: color 0.3s ease, filter 0.3s ease;
+            transition: color 0.3s ease;
         }
         .button:hover {
             color: #000000;
         }
 
-        /* 基础图标样式（用于普通按钮） */
-        img.icon {
+        /* 图标容器：mask 层 + 叠加层 */
+        .icon-container {
+            position: relative;
             width: 1.2em;
             height: 1.2em;
-            image-rendering: pixelated;           /* 最近邻采样 */
+            flex-shrink: 0;
+        }
+        /* 主图标：通过 mask 显示，颜色可平滑过渡 */
+        .icon-mask {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #37245f;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
-            transition: filter 0.3s ease;
+            transition: background-color 0.3s ease;
         }
-        .button:hover img.icon {
-            filter: brightness(0);                /* 普通图标悬停变黑 */
+        .button:hover .icon-mask {
+            background-color: #000000;
         }
-
-        /* 文章按钮的双图切换容器 */
-        .icon-switch {
-            position: relative;
-            display: inline-block;
-            width: 1.2em;
-            height: 1.2em;
-        }
-        .icon-switch img {
+        /* 常驻叠加层：直接显示原图（只含红色部分），不受 mask 影响 */
+        .icon-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
-        }
-        .icon-switch img.icon-default {
-            display: block;
-        }
-        .icon-switch img.icon-hover {
-            display: none;
-        }
-        .button:hover .icon-switch img.icon-default {
-            display: none;
-        }
-        .button:hover .icon-switch img.icon-hover {
-            display: block;
+            pointer-events: none;   /* 不阻挡点击 */
         }
     </style>
 </head>
@@ -104,33 +100,45 @@
         <div class="subtitle">-绿色蔬菜-</div>
 
         <div class="button-group">
-            <!-- 文章（双图切换） -->
+            <!-- 文章 -->
             <a class="button" href="articles.html">
-                <span class="icon-switch">
-                    <img class="icon-default" src="book.png" alt="">
-                    <img class="icon-hover" src="bookred.png" alt="">
+                <span class="icon-container">
+                    <span class="icon-mask" style="mask-image: url('book.png'); -webkit-mask-image: url('book.png');"></span>
+                    <img class="icon-overlay" src="bookred.png" alt="">
                 </span>
             </a>
 
             <!-- 切割模拟器（图标+文字） -->
             <a class="button" href="https://wwamr.lanzoum.com/iOgcJ42bzn7i" target="_blank">
-                <img class="icon" src="qgq.png" alt="">
+                <span class="icon-container">
+                    <span class="icon-mask" style="mask-image: url('qgq.png'); -webkit-mask-image: url('qgq.png');"></span>
+                    <img class="icon-overlay" src="bookred.png" alt="">
+                </span>
                 天杀切割器
             </a>
 
-            <!-- B站首页（仅图标） -->
+            <!-- B站首页 -->
             <a class="button" href="https://space.bilibili.com/3546387744557738?spm_id_from=333.337.0.0" target="_blank">
-                <img class="icon" src="bilibili.png" alt="">
+                <span class="icon-container">
+                    <span class="icon-mask" style="mask-image: url('bilibili.png'); -webkit-mask-image: url('bilibili.png');"></span>
+                    <img class="icon-overlay" src="bookred.png" alt="">
+                </span>
             </a>
 
-            <!-- X（仅图标） -->
+            <!-- X -->
             <a class="button" href="https://x.com/i/status/2075440775723413893" target="_blank">
-                <img class="icon" src="X.png" alt="">
+                <span class="icon-container">
+                    <span class="icon-mask" style="mask-image: url('X.png'); -webkit-mask-image: url('X.png');"></span>
+                    <img class="icon-overlay" src="bookred.png" alt="">
+                </span>
             </a>
 
             <!-- 支持我（图标+文字） -->
             <a class="button" href="https://www.ifdian.net/order/create?user_id=9c51d8d47bff11f1bdbd5254001e7c00&amp;remark=&amp;affiliate_code=" target="_blank">
-                <img class="icon" src="happy.png" alt="">
+                <span class="icon-container">
+                    <span class="icon-mask" style="mask-image: url('happy.png'); -webkit-mask-image: url('happy.png');"></span>
+                    <img class="icon-overlay" src="bookred.png" alt="">
+                </span>
                 支持我
             </a>
         </div>
