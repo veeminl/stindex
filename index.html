@@ -10,7 +10,7 @@
             margin: 0;
             padding: 60px 40px;
             background-color: #ffffff;
-            color: #17244f;
+            color: #37245f;
         }
         /* 选中文本样式 */
         ::selection {
@@ -31,11 +31,11 @@
             font-weight: 700;
             margin-bottom: 0.2em;
             letter-spacing: -0.5px;
-            color: #17244f;
+            color: #37245f;
         }
         .subtitle {
             font-size: 1.2em;
-            color: #17244f;
+            color: #37245f;
             margin-bottom: 3em;
             font-weight: 400;
         }
@@ -49,27 +49,33 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 1.8em;                /* 按钮容器固定大小，仅容纳图标 */
+            width: 1.8em;
             height: 1.8em;
             transition: background-color 0.3s ease;
             text-decoration: none;
-            /* 悬停时颜色改变由 mask 的 background-color 控制 */
         }
         .icon {
             display: block;
             width: 100%;
             height: 100%;
-            background-color: #17244f;   /* 默认颜色 */
+            background-color: #37245f;   /* 默认颜色 */
             mask-size: contain;
             mask-repeat: no-repeat;
             mask-position: center;
             -webkit-mask-size: contain;
             -webkit-mask-repeat: no-repeat;
             -webkit-mask-position: center;
-            transition: background-color 0.3s ease;  /* 平滑过渡 */
+            transition: background-color 0.3s ease;
         }
         .button:hover .icon {
             background-color: #000000;   /* 悬停颜色 */
+        }
+        /* 固定红色图标：不参与颜色变化 */
+        .icon.fixed-red {
+            background-color: #ff0000 !important;  /* 始终红色 */
+        }
+        .button:hover .icon.fixed-red {
+            background-color: #ff0000 !important;  /* 悬停也保持红色 */
         }
     </style>
 </head>
@@ -84,9 +90,9 @@
                 <span class="icon" style="mask-image: url('book.png'); -webkit-mask-image: url('book.png');"></span>
             </a>
 
-            <!-- 切割模拟器 -->
+            <!-- 切割模拟器（红色图标固定） -->
             <a class="button" href="https://wwamr.lanzoum.com/iOgcJ42bzn7i" target="_blank" title="切割模拟器">
-                <span class="icon" style="mask-image: url('qgq.png'); -webkit-mask-image: url('qgq.png');"></span>
+                <span class="icon fixed-red" style="mask-image: url('qgq.png'); -webkit-mask-image: url('qgq.png');"></span>
             </a>
 
             <!-- B站首页 -->
