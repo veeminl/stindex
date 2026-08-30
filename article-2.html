@@ -4,60 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的第一篇游戏开发日志 - ST</title>
+<script src="theme.js"></script>
 <link rel="stylesheet" href="obsidian.css">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            margin: 0;
-            padding: 60px 40px;
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            text-align: left;
-        }
-        .back-link {
-            display: inline-block;
-            font-size: 1em;
-            color: #000;
-            text-decoration: none;
-            margin-bottom: 30px;
-            opacity: 0.6;
-        }
-        .back-link:hover {
-            opacity: 1;
-        }
-        h1 {
-            font-size: 2.2em;
-            font-weight: 700;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-        .article-meta {
-            font-size: 0.9em;
-            color: #999;
-            margin-bottom: 40px;
-        }
-        .article-content {
-            font-size: 1.05em;
-            line-height: 1.9;
-            color: #222;
-        }
-        .article-content p {
-            margin-bottom: 1.5em;
-        }
-        .article-content h2 {
-            font-size: 1.4em;
-            margin-top: 2em;
-            margin-bottom: 0.8em;
-        }
-        .article-content img {
-            max-width: 100%;
-            border-radius: 4px;
-        }
-    </style>
+<link rel="stylesheet" href="works.css">
 </head>
 <body>
     <div class="container">
@@ -240,16 +189,6 @@
         </div>
     </div>
 
-    <script>
-        // 页面加载时自动增加浏览量并显示
-        fetch('https://api.countapi.xyz/hit/veeminl/article-1')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('view-count').textContent = data.value;
-            })
-            .catch(() => {
-                document.getElementById('view-count').textContent = '0';
-            });
-    </script>
+    <script src="theme.js"></script>
 </body>
 </html>

@@ -4,65 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章 - ST</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            margin: 0;
-            padding: 60px 40px;
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .container {
-            max-width: 650px;
-            margin: 0 auto;
-            text-align: left;
-        }
-        h1 {
-            font-size: 2.5em;
-            font-weight: 700;
-            margin-bottom: 0.3em;
-        }
-        .back-link {
-            display: inline-block;
-            font-size: 1em;
-            color: #000;
-            text-decoration: none;
-            margin-bottom: 40px;
-            opacity: 0.6;
-        }
-        .back-link:hover {
-            opacity: 1;
-        }
-        .article-card {
-            display: block;
-            text-decoration: none;
-            color: #000;
-            border-top: 1px solid #ddd;
-            padding: 24px 0;
-            transition: background 0.2s;
-        }
-        .article-card:hover {
-            background: #fafafa;
-        }
-        .article-title {
-            font-size: 1.4em;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .article-meta {
-            font-size: 0.85em;
-            color: #999;
-            margin-bottom: 10px;
-        }
-        .article-preview {
-            font-size: 0.95em;
-            color: #555;
-            line-height: 1.6;
-        }
-        .article-card:last-child {
-            border-bottom: 1px solid #ddd;
-        }
-    </style>
+<script src="theme.js"></script>
+<link rel="stylesheet" href="article.css">
 </head>
 <body>
     <div class="container">
@@ -70,8 +13,6 @@
         <a class="back-link" href="index.html">← 返回首页</a>
 
         <!-- ==================== 文章卡片列表 ==================== -->
-        <!-- 复制这一整块来添加新文章 -->
-
         <a class="article-card" href="article-1.html">
             <div class="article-title">当我看见二老板在草丛里面撒尿</div>
             <div class="article-meta">
@@ -82,7 +23,6 @@
             </div>
         </a>
 
-        <!-- 第二篇文章示例（要启用请把下面注释去掉并修改）-->
         <a class="article-card" href="article-2.html">
             <div class="article-title">生物设定 - 腐植菌</div>
             <div class="article-meta">
@@ -92,27 +32,7 @@
                 一种兼具腐生与捕食能力的真核微生物，形态类似黏菌，但拥有更复杂的.......
             </div>
         </a>
-        
-
     </div>
-
-    <script>
-        // 自动获取每篇文章的浏览量
-        // 修改这里的文章ID列表
-        const articleIds = ['article-1']; // 每加一篇就加一个ID，例如 ['article-1','article-2']
-
-        articleIds.forEach(id => {
-            fetch('https://api.countapi.xyz/get/veeminl/' + id)
-                .then(res => res.json())
-                .then(data => {
-                    const el = document.getElementById('views-' + id.replace('article-', ''));
-                    if (el) el.textContent = data.value || 0;
-                })
-                .catch(() => {
-                    const el = document.getElementById('views-' + id.replace('article-', ''));
-                    if (el) el.textContent = '0';
-                });
-        });
-    </script>
+    <script src="theme.js"></script>
 </body>
 </html>
