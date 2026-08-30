@@ -15,12 +15,12 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
             min-height: 100vh;
-            background-color: #ffffff;               /* 基础白色背景 */
-            color: #37245f;                            /* 默认文字颜色 */
+            background-color: #ffffff;
+            color: #37245f;
             position: relative;
         }
 
-        /* 背景渐变层：从白到黑，10%强度 */
+        /* 背景渐变层：从白到黑，25%强度 */
         body::before {
             content: "";
             position: fixed;
@@ -28,10 +28,28 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, #ffffff, #000000);
-            opacity: 0.1;
+            background: linear-gradient(to bottom, #ffffff 	0%, #000000);
+            opacity: 0.2;
             pointer-events: none;
             z-index: 0;
+        }
+
+        /* 背景网格线层：铺满黑色网格，并从下到上线性擦除 */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(to right, rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+            /* 线性擦除：底部不透明，顶部透明 */
+            -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
         }
 
         /* 选中文本样式 */
@@ -47,7 +65,7 @@
         /* 主容器 */
         .container {
             position: relative;
-            z-index: 1;                                /* 置于渐变层之上 */
+            z-index: 1;
             max-width: 600px;
             margin: 0 auto;
             padding: 60px 40px;
@@ -102,29 +120,29 @@
             flex-shrink: 0;
         }
 
-        /* 主图标层：通过 mask 显示形状，颜色可平滑过渡 */
+        /* 主图标层 */
         .icon-mask {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            background-color: #37245f;                 /* 默认颜色 */
+            background-color: #37245f;
             mask-size: contain;
             mask-repeat: no-repeat;
             mask-position: center;
             -webkit-mask-size: contain;
             -webkit-mask-repeat: no-repeat;
             -webkit-mask-position: center;
-            image-rendering: pixelated;                /* 最近邻采样 */
+            image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
-            transition: background-color 0.3s ease;    /* 颜色渐变过渡 */
+            transition: background-color 0.3s ease;
         }
         .button:hover .icon-mask {
-            background-color: #000000;                 /* 悬停颜色 */
+            background-color: #000000;
         }
 
-        /* 常驻叠加层：直接显示原图（只含红色部分），不受 mask 影响 */
+        /* 常驻叠加层 */
         .icon-overlay {
             position: absolute;
             inset: 0;
@@ -133,7 +151,7 @@
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
-            pointer-events: none;                      /* 不阻挡点击 */
+            pointer-events: none;
         }
     </style>
 </head>
@@ -143,7 +161,7 @@
         <div class="subtitle">-绿色蔬菜-</div>
 
         <div class="button-group">
-            <!-- 文章（仅图标，红色细节保留） -->
+            <!-- 文章 -->
             <a class="button" href="articles.html">
                 <span class="icon-container">
                     <span class="icon-mask" style="mask-image: url('book.png'); -webkit-mask-image: url('book.png');"></span>
@@ -151,7 +169,7 @@
                 </span>
             </a>
 
-            <!-- 切割模拟器（图标+文字） -->
+            <!-- 切割模拟器 -->
             <a class="button" href="https://wwamr.lanzoum.com/iOgcJ42bzn7i" target="_blank">
                 <span class="icon-container">
                     <span class="icon-mask" style="mask-image: url('qgq.png'); -webkit-mask-image: url('qgq.png');"></span>
@@ -159,21 +177,21 @@
                 天杀切割器
             </a>
 
-            <!-- B站首页（仅图标） -->
+            <!-- B站首页 -->
             <a class="button" href="https://space.bilibili.com/3546387744557738?spm_id_from=333.337.0.0" target="_blank">
                 <span class="icon-container">
                     <span class="icon-mask" style="mask-image: url('bilibili.png'); -webkit-mask-image: url('bilibili.png');"></span>
                 </span>
             </a>
 
-            <!-- X（仅图标） -->
+            <!-- X -->
             <a class="button" href="https://x.com/i/status/2075440775723413893" target="_blank">
                 <span class="icon-container">
                     <span class="icon-mask" style="mask-image: url('X.png'); -webkit-mask-image: url('X.png');"></span>
                 </span>
             </a>
 
-            <!-- 支持我（图标+文字） -->
+            <!-- 支持我 -->
             <a class="button" href="https://www.ifdian.net/order/create?user_id=9c51d8d47bff11f1bdbd5254001e7c00&amp;remark=&amp;affiliate_code=" target="_blank">
                 <span class="icon-container">
                     <span class="icon-mask" style="mask-image: url('happy.png'); -webkit-mask-image: url('happy.png');"></span>
