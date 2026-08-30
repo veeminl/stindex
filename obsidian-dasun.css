@@ -1,0 +1,217 @@
+/* ========== 浅色模式变量（默认） ========== */
+:root {
+    --article-text: #333333;
+    --article-heading: #222222;
+    --article-heading-border: #eaecef;
+    --article-muted: #6a737d;
+    --article-link: #5b8def;
+    --article-mark-bg: #fff9c4;
+    --article-blockquote-bg: #f6f8fa;
+    --article-blockquote-text: #57606a;
+    --article-blockquote-border: #0060FE;
+    --article-code-bg: rgba(27, 31, 35, 0.05);
+    --article-pre-bg: #f6f8fa;
+    --article-table-border: #d0d7de;
+    --article-table-header-bg: #f6f8fa;
+    --article-hr: #eaecef;
+    --article-kbd-text: #444d56;
+    --article-kbd-bg: #fafbfc;
+    --article-kbd-border: #d1d5da;
+    --article-kbd-border-bottom: #c6cbd1;
+}
+
+/* ========== 深色模式变量 ========== */
+html.dark-mode {
+    --article-text: #d0d0d0;
+    --article-heading: #ffffff;
+    --article-heading-border: #3a3f44;
+    --article-muted: #9da3a8;
+    --article-link: #6ea8fe;
+    --article-mark-bg: #5a4a1f;
+    --article-blockquote-bg: #2b2f33;
+    --article-blockquote-text: #c0c4c8;
+    --article-blockquote-border: #0060FE;
+    --article-code-bg: rgba(240, 246, 252, 0.15);
+    --article-pre-bg: #2b2f33;
+    --article-table-border: #3a3f44;
+    --article-table-header-bg: #2b2f33;
+    --article-hr: #3a3f44;
+    --article-kbd-text: #d0d0d0;
+    --article-kbd-bg: #2b2f33;
+    --article-kbd-border: #55595e;
+    --article-kbd-border-bottom: #6a6e73;
+}
+
+/* ========== Obsidian 风格文章样式 ========== */
+.article-content {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--article-text);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 标题 */
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+    font-weight: 600;
+    margin: 1.5em 0 0.5em;
+    line-height: 1.3;
+    color: var(--article-heading);
+}
+.article-content h1 { font-size: 2em; border-bottom: 1px solid var(--article-heading-border); padding-bottom: 0.3em; }
+.article-content h2 { font-size: 1.5em; border-bottom: 1px solid var(--article-heading-border); padding-bottom: 0.3em; }
+.article-content h3 { font-size: 1.25em; }
+.article-content h4 { font-size: 1.1em; }
+.article-content h5 { font-size: 1em; }
+.article-content h6 { font-size: 0.9em; color: var(--article-muted); }
+
+/* 段落 */
+.article-content p {
+    margin: 0.8em 0;
+}
+
+/* 加粗、斜体、删除线、高亮 */
+.article-content strong { font-weight: 600; }
+.article-content em { font-style: italic; }
+.article-content del { text-decoration: line-through; color: var(--article-muted); }
+.article-content mark {
+    background-color: var(--article-mark-bg);
+    padding: 0.1em 0.2em;
+    border-radius: 3px;
+}
+
+/* 链接 */
+.article-content a {
+    color: var(--article-link);
+    text-decoration: none;
+}
+.article-content a:hover {
+    text-decoration: underline;
+}
+
+/* 列表 */
+.article-content ul,
+.article-content ol {
+    padding-left: 1.5em;
+    margin: 0.8em 0;
+}
+.article-content li {
+    margin: 0.3em 0;
+}
+.article-content li::marker {
+    color: var(--article-muted);
+}
+
+/* 任务列表 */
+.article-content .task-list-item {
+    list-style-type: none;
+}
+.article-content .task-list-item input[type="checkbox"] {
+    margin-right: 0.5em;
+    transform: translateY(1px);
+}
+
+/* 引用块 */
+.article-content blockquote {
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border-left: 2px solid var(--article-blockquote-border);
+    background-color: var(--article-blockquote-bg);
+    color: var(--article-blockquote-text);
+    border-radius: 0 4px 4px 0;
+}
+.article-content blockquote p {
+    margin: 0.4em 0;
+}
+
+/* 代码块（行内与块级） */
+.article-content code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    background-color: var(--article-code-bg);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+.article-content pre {
+    background-color: var(--article-pre-bg);
+    padding: 1em;
+    border-radius: 6px;
+    overflow-x: auto;
+    line-height: 1.45;
+    margin: 1em 0;
+}
+.article-content pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.9em;
+}
+
+/* 表格 */
+.article-content table {
+    border-collapse: collapse;
+    margin: 1em 0;
+    width: auto;
+    max-width: 100%;
+}
+.article-content th,
+.article-content td {
+    border: 1px solid var(--article-table-border);
+    padding: 0.3em 0.6em;
+    text-align: left;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+.article-content th {
+    background-color: var(--article-table-header-bg);
+    font-weight: 600;
+}
+
+/* 水平线 */
+.article-content hr {
+    border: none;
+    height: 1px;
+    background-color: var(--article-hr);
+    margin: 2em 0;
+}
+
+/* 图片 */
+.article-content img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+/* 脚注 */
+.article-content .footnote {
+    font-size: 0.85em;
+    color: var(--article-muted);
+    border-top: 1px solid var(--article-heading-border);
+    margin-top: 2em;
+    padding-top: 1em;
+}
+
+/* 键盘按键 */
+.article-content kbd {
+    display: inline-block;
+    padding: 0.2em 0.4em;
+    font-size: 0.85em;
+    line-height: 1;
+    color: var(--article-kbd-text);
+    background-color: var(--article-kbd-bg);
+    border: 1px solid var(--article-kbd-border);
+    border-bottom-color: var(--article-kbd-border-bottom);
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 var(--article-kbd-border-bottom);
+}
+
+/* ========== 颜色过渡（lerp） ========== */
+/* 为所有文章内容元素添加平滑的颜色过渡 */
+.article-content *,
+.article-content {
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
