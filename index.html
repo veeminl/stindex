@@ -5,40 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ST -绿色蔬菜-</title>
     <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            margin: 0;
-            padding: 60px 40px;
-            background-color: #ffffff;
-            color: #37245f;
+            min-height: 100vh;
+            background-color: #ffffff;               /* 基础白色背景 */
+            color: #37245f;                            /* 默认文字颜色 */
+            position: relative;
         }
+
+        /* 背景渐变层：从白到黑，10%强度 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, #ffffff, #000000);
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* 选中文本样式 */
         ::selection {
             background: #000000;
             color: #ffffff;
         }
+        ::-moz-selection {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        /* 主容器 */
         .container {
+            position: relative;
+            z-index: 1;                                /* 置于渐变层之上 */
             max-width: 600px;
             margin: 0 auto;
+            padding: 60px 40px;
             text-align: left;
         }
+
+        /* 标题 */
         h1 {
             font-size: 3em;
             font-weight: 700;
+            margin-bottom: 0.2em;
             letter-spacing: -0.5px;
             color: #37245f;
         }
+
+        /* 副标题 */
         .subtitle {
             font-size: 1.2em;
             color: #37245f;
             margin-bottom: 3em;
             font-weight: 400;
         }
+
+        /* 按钮组 */
         .button-group {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 16px;
         }
+
+        /* 按钮基础样式 */
         .button {
             display: inline-flex;
             align-items: center;
@@ -53,34 +94,36 @@
             color: #000000;
         }
 
-        /* 图标容器：mask 层 + 可选叠加层 */
+        /* 图标容器 */
         .icon-container {
             position: relative;
             width: 1.2em;
             height: 1.2em;
             flex-shrink: 0;
         }
-        /* 主图标：通过 mask 显示，颜色可平滑过渡 */
+
+        /* 主图标层：通过 mask 显示形状，颜色可平滑过渡 */
         .icon-mask {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            background-color: #37245f;
+            background-color: #37245f;                 /* 默认颜色 */
             mask-size: contain;
             mask-repeat: no-repeat;
             mask-position: center;
             -webkit-mask-size: contain;
             -webkit-mask-repeat: no-repeat;
             -webkit-mask-position: center;
-            image-rendering: pixelated;
+            image-rendering: pixelated;                /* 最近邻采样 */
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease;    /* 颜色渐变过渡 */
         }
         .button:hover .icon-mask {
-            background-color: #000000;
+            background-color: #000000;                 /* 悬停颜色 */
         }
+
         /* 常驻叠加层：直接显示原图（只含红色部分），不受 mask 影响 */
         .icon-overlay {
             position: absolute;
@@ -90,7 +133,7 @@
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
-            pointer-events: none;   /* 不阻挡点击 */
+            pointer-events: none;                      /* 不阻挡点击 */
         }
     </style>
 </head>
@@ -100,7 +143,7 @@
         <div class="subtitle">-绿色蔬菜-</div>
 
         <div class="button-group">
-            <!-- 文章（图标+叠加红色细节） -->
+            <!-- 文章（仅图标，红色细节保留） -->
             <a class="button" href="articles.html">
                 <span class="icon-container">
                     <span class="icon-mask" style="mask-image: url('book.png'); -webkit-mask-image: url('book.png');"></span>
@@ -116,14 +159,14 @@
                 天杀切割器
             </a>
 
-            <!-- B站首页 -->
+            <!-- B站首页（仅图标） -->
             <a class="button" href="https://space.bilibili.com/3546387744557738?spm_id_from=333.337.0.0" target="_blank">
                 <span class="icon-container">
                     <span class="icon-mask" style="mask-image: url('bilibili.png'); -webkit-mask-image: url('bilibili.png');"></span>
                 </span>
             </a>
 
-            <!-- X -->
+            <!-- X（仅图标） -->
             <a class="button" href="https://x.com/i/status/2075440775723413893" target="_blank">
                 <span class="icon-container">
                     <span class="icon-mask" style="mask-image: url('X.png'); -webkit-mask-image: url('X.png');"></span>
