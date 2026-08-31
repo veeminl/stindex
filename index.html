@@ -50,24 +50,23 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            min-height: 100vh;
             background-color: var(--bg-color);
             color: var(--text-color);
             position: relative;
+            overflow: hidden;
+            height: 100vh;
             transition: background-color 0.15s ease, color 0.15s ease, opacity 0.2s ease;
             opacity: 1;
         }
 
-        /* 页面淡出状态 */
         body.page-fade-out {
             opacity: 0;
         }
-        /* 页面淡入状态 */
         body.page-fade-in {
             opacity: 1;
         }
 
-        /* 背景渐变层：从白到黑，20%强度 */
+        /* 背景渐变层 */
         body::before {
             content: "";
             position: fixed;
@@ -82,7 +81,7 @@
             transition: background 0.15s ease;
         }
 
-        /* 背景网格线层：铺满黑色网格，并从下到上线性擦除 */
+        /* 背景网格线层 */
         body::after {
             content: "";
             position: fixed;
@@ -110,45 +109,123 @@
             color: var(--selection-text);
         }
 
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 60px 40px;
+        /* ========== 标题组：左侧 200px，垂直居中 ========== */
+        .left-title-group {
+            position: absolute;
+            left: 200px;
+            top: 50%;
+            transform: translateY(-50%);
             text-align: left;
+            z-index: 5;
+            pointer-events: none;
         }
 
-        h1 {
-            font-size: 3em;
+        .main-title {
+            font-size: 3.75em;
             font-weight: 700;
-            margin-bottom: 0.2em;
             letter-spacing: -0.5px;
             color: var(--text-color);
+            margin-bottom: 0.2em;
         }
 
-        .subtitle {
-            font-size: 1.2em;
+        .sub-title {
+            font-size: 0.9em;
             color: var(--text-color);
-            margin-bottom: 3em;
             font-weight: 400;
+            letter-spacing: 0.3px;
         }
 
-        .button-group {
+        /* ========== TS 图片入口：右侧垂直居中 ========== */
+        .game-entry {
+            position: absolute;
+            right: 400px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+            text-decoration: none;
+            z-index: 5;
+        }
+
+        .game-entry img {
+            display: block;
+            width: 360px;
+            height: 360px;
+            object-fit: cover;
+            border: none;
+            border-radius: 0;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            transition: border 0.15s ease;
+        }
+
+        /* 悬停时：白色描边 + 黑色外描边 */
+        .game-entry:hover img {
+            border: 1px solid #ffffff;
+            outline: 1px solid #000000;
+            outline-offset: 1px;
+        }
+
+        .game-label {
+            position: absolute;
+            top: -1.5em;
+            left: 0px;
+            font-size: 0.6em;
+            color: var(--text-color);
+            padding: 0 4px;
+            letter-spacing: 0.3px;
+            pointer-events: none;
+            z-index: 3;
+            transition: color 0.15s ease;
+        }
+
+        .game-entry:hover .game-label {
+            color: var(--hover-color);
+        }
+
+        /* 内部底部横条：固定白色 */
+        .game-entry .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #ffffff;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .game-entry:hover .bottom-bar {
+            opacity: 1;
+        }
+
+        /* ========== 底部按钮组（固定） ========== */
+        .bottom-button-group {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 0 10px 5px;
+            z-index: 10;
+            max-width: 100%;
+            width: auto;
         }
 
         .button {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 1.2em;
+            gap: 4px;
+            font-size: 0.6em;
             color: var(--text-color);
             text-decoration: none;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.15px;
             transition: color 0.15s ease;
         }
         .button:hover {
@@ -157,8 +234,8 @@
 
         .icon-container {
             position: relative;
-            width: 1.2em;
-            height: 1.2em;
+            width: 0.6em;
+            height: 0.6em;
             flex-shrink: 0;
         }
 
@@ -196,49 +273,54 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ST</h1>
-        <div class="subtitle">-绿色蔬菜-</div>
+    <!-- 标题组：左侧 200px，垂直居中 -->
+    <div class="left-title-group">
+        <h1 class="main-title">I DOMINATE ALL</h1>
+        <h1 class="main-title">THIS</h1>
+        <p class="sub-title">Records my words, shares my games, showcases my homepage.</p>
+    </div>
 
-        <div class="button-group">
-            <!-- 文章（仅图标，红色细节保留） -->
-            <a class="button" href="articles.html">
-                <span class="icon-container">
-                    <span class="icon-mask" style="mask-image: url('book.png'); -webkit-mask-image: url('book.png');"></span>
-                    <img class="icon-overlay" src="bookred.png" alt="">
-                </span>
-            </a>
+    <!-- TS 图片入口：右侧垂直居中 -->
+    <a class="game-entry" href="https://wwamr.lanzoum.com/iOgcJ42bzn7i" target="_blank">
+        <span class="game-label">天杀星刀 Heaven-Killing Star Blade</span>
+        <img src="ts.png" alt="天杀切割器">
+        <span class="bottom-bar"></span>
+    </a>
 
-            <!-- 切割模拟器（图标+文字） -->
-            <a class="button" href="https://wwamr.lanzoum.com/iOgcJ42bzn7i" target="_blank">
-                <span class="icon-container">
-                    <span class="icon-mask" style="mask-image: url('qgq.png'); -webkit-mask-image: url('qgq.png');"></span>
-                </span>
-                天杀切割器
-            </a>
+    <!-- 底部固定按钮组：隐私政策、文章、B站、X、支持我 -->
+    <div class="bottom-button-group">
+        <a class="button" href="privacy.html">
+            <span class="icon-container">
+                <span class="icon-mask" style="mask-image: url('infor.png'); -webkit-mask-image: url('infor.png');"></span>
+            </span>
+            隐私政策
+        </a>
 
-            <!-- B站首页（仅图标） -->
-            <a class="button" href="https://space.bilibili.com/3546387744557738?spm_id_from=333.337.0.0" target="_blank">
-                <span class="icon-container">
-                    <span class="icon-mask" style="mask-image: url('bilibili.png'); -webkit-mask-image: url('bilibili.png');"></span>
-                </span>
-            </a>
+        <a class="button" href="articles.html">
+            <span class="icon-container">
+                <span class="icon-mask" style="mask-image: url('book.png'); -webkit-mask-image: url('book.png');"></span>
+                <img class="icon-overlay" src="bookred.png" alt="">
+            </span>
+        </a>
 
-            <!-- X（仅图标） -->
-            <a class="button" href="https://x.com/i/status/2075440775723413893" target="_blank">
-                <span class="icon-container">
-                    <span class="icon-mask" style="mask-image: url('X.png'); -webkit-mask-image: url('X.png');"></span>
-                </span>
-            </a>
+        <a class="button" href="https://space.bilibili.com/3546387744557738?spm_id_from=333.337.0.0" target="_blank">
+            <span class="icon-container">
+                <span class="icon-mask" style="mask-image: url('bilibili.png'); -webkit-mask-image: url('bilibili.png');"></span>
+            </span>
+        </a>
 
-            <!-- 支持我（图标+文字） -->
-            <a class="button" href="https://www.ifdian.net/order/create?user_id=9c51d8d47bff11f1bdbd5254001e7c00&amp;remark=&amp;affiliate_code=" target="_blank">
-                <span class="icon-container">
-                    <span class="icon-mask" style="mask-image: url('happy.png'); -webkit-mask-image: url('happy.png');"></span>
-                </span>
-                支持我
-            </a>
-        </div>
+        <a class="button" href="https://x.com/i/status/2075440775723413893" target="_blank">
+            <span class="icon-container">
+                <span class="icon-mask" style="mask-image: url('X.png'); -webkit-mask-image: url('X.png');"></span>
+            </span>
+        </a>
+
+        <a class="button" href="https://www.ifdian.net/order/create?user_id=9c51d8d47bff11f1bdbd5254001e7c00&amp;remark=&amp;affiliate_code=" target="_blank">
+            <span class="icon-container">
+                <span class="icon-mask" style="mask-image: url('happy.png'); -webkit-mask-image: url('happy.png');"></span>
+            </span>
+            支持我
+        </a>
     </div>
 
     <script src="theme.js"></script>
