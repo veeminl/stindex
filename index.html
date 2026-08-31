@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ST -绿色蔬菜-</title>
-    <script src="themevar.js"></script>
+    <script>
+        (function() {
+            var savedMode = localStorage.getItem('theme-mode');
+            if (savedMode === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
 
     <style>
         /* ========== CSS 变量（浅色模式默认） ========== */
@@ -128,7 +135,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* ========== TS 图片入口：右侧垂直居中 ========== */
+        /* ========== TS 图片入口：右侧垂直居中，无上移 ========== */
         .game-entry {
             position: absolute;
             right: 400px;
@@ -152,7 +159,6 @@
             transition: border 0.15s ease;
         }
 
-        /* 悬停时：白色描边 + 黑色外描边 */
         .game-entry:hover img {
             border: 1px solid #ffffff;
             outline: 1px solid #000000;
@@ -176,7 +182,6 @@
             color: var(--hover-color);
         }
 
-        /* 内部底部横条：固定白色 */
         .game-entry .bottom-bar {
             position: absolute;
             bottom: 0;
@@ -225,13 +230,15 @@
             color: var(--hover-color);
         }
 
+        /* 图标容器：放大一倍 */
         .icon-container {
             position: relative;
-            width: 0.6em;
-            height: 0.6em;
+            width: 1.2em;      /* 原 0.6em × 2 */
+            height: 1.2em;
             flex-shrink: 0;
         }
 
+        /* 使用 mask 上色的图标 */
         .icon-mask {
             position: absolute;
             inset: 0;
@@ -251,6 +258,18 @@
         }
         .button:hover .icon-mask {
             background-color: var(--icon-hover);
+        }
+
+        /* 直接显示原图的图标（如 infor.png） */
+        .icon-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            pointer-events: none;
         }
 
         .icon-overlay {
@@ -284,7 +303,8 @@
     <div class="bottom-button-group">
         <a class="button" href="privacy.html">
             <span class="icon-container">
-                <span class="icon-mask" style="mask-image: url('infor.png'); -webkit-mask-image: url('infor.png');"></span>
+                <!-- 隐私政策图标：直接显示原图，不上色 -->
+                <img class="icon-img" src="infor.png" alt="隐私政策">
             </span>
             隐私政策
         </a>
@@ -317,5 +337,6 @@
     </div>
 
     <script src="theme.js"></script>
+    <script src="page-transition.js"></script>
 </body>
 </html>
