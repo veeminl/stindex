@@ -80,7 +80,7 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 60px 40px 100px; /* 底部留白避免遮挡固定按钮 */
+            padding: 60px 40px;
         }
 
         /* 返回链接 */
@@ -105,76 +105,6 @@
             margin-bottom: 30px;
             color: var(--heading-color);
         }
-
-        /* ========== 底部固定按钮组 ========== */
-        .bottom-button-group {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            padding: 0 10px 5px;
-            z-index: 10;
-            max-width: 100%;
-            width: auto;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.6em;
-            color: var(--text-color);
-            text-decoration: none;
-            letter-spacing: 0.15px;
-            transition: color 0.15s ease;
-        }
-        .button:hover {
-            color: var(--hover-color);
-        }
-
-        .icon-container {
-            position: relative;
-            width: 0.6em;
-            height: 0.6em;
-            flex-shrink: 0;
-        }
-
-        .icon-mask {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--icon-default);
-            mask-size: contain;
-            mask-repeat: no-repeat;
-            mask-position: center;
-            -webkit-mask-size: contain;
-            -webkit-mask-repeat: no-repeat;
-            -webkit-mask-position: center;
-            image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
-            transition: background-color 0.15s ease;
-        }
-        .button:hover .icon-mask {
-            background-color: var(--icon-hover);
-        }
-
-        .icon-overlay {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
-            pointer-events: none;
-        }
     </style>
 </head>
 <body>
@@ -183,7 +113,7 @@
         <h1 class="article-title">隐私政策</h1>
 
         <div class="article-content">
-            <p>本网站（以下简称“本站”）非常重视用户的隐私和个人信息保护。本隐私政策旨在说明我们如何收集、使用、存储和保护您的信息。使用本站即表示您同意本政策。</p>
+            <p>本网站（以下简称"本站"）非常重视用户的隐私和个人信息保护。本隐私政策旨在说明我们如何收集、使用、存储和保护您的信息。使用本站即表示您同意本政策。</p>
 
             <h2>一、我们收集的信息</h2>
             <p>本站为纯静态网站，本身不主动收集您的个人身份信息。但在您访问时，以下信息可能会被自动记录或由第三方服务收集：</p>
@@ -237,42 +167,6 @@
 
             <p>最后更新日期：2026年8月31日</p>
         </div>
-    </div>
-
-    <!-- 底部固定按钮组：隐私政策、文章、B站、X、支持我 -->
-    <div class="bottom-button-group">
-        <a class="button" href="privacy.html">
-            <span class="icon-container">
-                <span class="icon-mask" style="mask-image: url('infor.png'); -webkit-mask-image: url('infor.png');"></span>
-            </span>
-            隐私政策
-        </a>
-
-        <a class="button" href="articles.html">
-            <span class="icon-container">
-                <span class="icon-mask" style="mask-image: url('book.png'); -webkit-mask-image: url('book.png');"></span>
-                <img class="icon-overlay" src="bookred.png" alt="">
-            </span>
-        </a>
-
-        <a class="button" href="https://space.bilibili.com/3546387744557738?spm_id_from=333.337.0.0" target="_blank">
-            <span class="icon-container">
-                <span class="icon-mask" style="mask-image: url('bilibili.png'); -webkit-mask-image: url('bilibili.png');"></span>
-            </span>
-        </a>
-
-        <a class="button" href="https://x.com/i/status/2075440775723413893" target="_blank">
-            <span class="icon-container">
-                <span class="icon-mask" style="mask-image: url('X.png'); -webkit-mask-image: url('X.png');"></span>
-            </span>
-        </a>
-
-        <a class="button" href="https://www.ifdian.net/order/create?user_id=9c51d8d47bff11f1bdbd5254001e7c00&amp;remark=&amp;affiliate_code=" target="_blank">
-            <span class="icon-container">
-                <span class="icon-mask" style="mask-image: url('happy.png'); -webkit-mask-image: url('happy.png');"></span>
-            </span>
-            支持我
-        </a>
     </div>
 
     <script src="theme.js"></script>
