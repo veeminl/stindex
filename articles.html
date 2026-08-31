@@ -4,8 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章 - ST</title>
-<script src="themevar.js"></script>
-<link rel="stylesheet" href="article.css">
+
+    <!-- 1. 主题初始化脚本（外部文件，也可内联） -->
+    <script src="themevar.js"></script>
+
+    <!-- 2. 主样式文件（需包含 html.dark-mode 变量定义） -->
+    <link rel="stylesheet" href="article.css">
+
+    <!-- 3. 页面过渡样式（内联） -->
+    <style>
+        body {
+            opacity: 1;
+            transition: opacity 0.2s ease;
+        }
+        body.page-fade-out {
+            opacity: 0;
+        }
+        body.page-fade-in {
+            opacity: 1;
+            transition: opacity 0.2s ease;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -32,7 +51,48 @@
                 一种兼具腐生与捕食能力的真核微生物，形态类似黏菌，但拥有更复杂的.......
             </div>
         </a>
+<a class="article-card" href="article-3.html">
+            <div class="article-title">理想</div>
+            <div class="article-meta">
+                <span>2026-08-31</span> · <span id="views-2">--</span> 次浏览
+            </div>
+            <div class="article-preview">
+                当我离开理想.......
+            </div>
+        </a>
+
+<a class="article-card" href="article-4.html">
+            <div class="article-title">你从旁边跳出来疯狂抽雷横的贡品</div>
+            <div class="article-meta">
+                <span>2026-08-31</span> · <span id="views-2">--</span> 次浏览
+            </div>
+            <div class="article-preview">
+                你从桥头侧面的岩壁上跳下来的时候，指挥官的眼睛还没来得及闭上.......
+            </div>
+        </a>
+<a class="article-card" href="article-5.html">
+            <div class="article-title">考据 - 天退星刀</div>
+            <div class="article-meta">
+                <span>2026-08-31</span> · <span id="views-2">--</span> 次浏览
+            </div>
+            <div class="article-preview">
+                如果有一把非常坚固的有1.5m长的大朴刀.......
+            </div>
+        </a>
+<a class="article-card" href="article-6.html">
+            <div class="article-title">我在中世纪当异次元商人</div>
+            <div class="article-meta">
+                <span>2026-08-31</span> · <span id="views-2">--</span> 次浏览
+            </div>
+            <div class="article-preview">
+                我每天可以掏出2-6个物品.......
+            </div>
+        </a>
     </div>
+
+    <!-- 4. 主题切换脚本 -->
     <script src="theme.js"></script>
+    <!-- 5. 页面过渡脚本 -->
+    <script src="page-transition.js"></script>
 </body>
 </html>
